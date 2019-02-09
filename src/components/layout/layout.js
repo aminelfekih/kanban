@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddStory from '../addStory/addStory';
 import List from '../list/list';
 import './layout.css';
 
@@ -59,6 +60,7 @@ class Layout extends Component {
         };
         this.handleOnDragBegin = this.handleOnDragBegin.bind(this);
         this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
+        this.onAddStory = this.onAddStory.bind(this);
       }
     handleOnDragBegin(e,value) {
         this.setState({ dragged: value });
@@ -68,11 +70,16 @@ class Layout extends Component {
         storiesToUpdate.find((story) => story.name === value.name).progression = this.state.dragged
         this.setState({ stories: storiesToUpdate });
     }
-
+    onAddStory(newStory) {
+      const updateStories = this.state.stories;
+      updateStories.push(newStory);
+      this.setState({ stories: updateStories });
+    }
     render() {
     const stories = this.state.stories
     return (
       <div className="board">
+        <AddStory onAddStory={this.onAddStory}/>
         <div className="lists">
 				{lists.map((list) => {
 					return (
