@@ -26,36 +26,7 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          stories: [
-            {
-              name: 'Project 1',
-              progression: "Story"
-            },
-            {
-              name: 'Project 2',
-              progression: "Done"
-            },
-            {
-              name: 'Project 3',
-              progression: "In Progress"
-            },
-            {
-              name: 'Project 4',
-              progression: "Story"
-            },
-            {
-              name: 'Project 5',
-              progression: "In Progress"
-            },
-            {
-              name: 'Project 6',
-              progression: "Not Started"
-            },
-            {
-              name: 'Project 7',
-              progression: "Story"
-            },
-          ],
+          stories: [],
           dragged: 0,
         };
         this.handleOnDragBegin = this.handleOnDragBegin.bind(this);
@@ -74,6 +45,11 @@ class Layout extends Component {
       const updateStories = this.state.stories;
       updateStories.push(newStory);
       this.setState({ stories: updateStories });
+    }
+    componentDidMount() {
+      fetch('/api/stories')
+      .then(response => response.json())
+      .then(stories => this.setState({ stories }));
     }
     render() {
     const stories = this.state.stories
