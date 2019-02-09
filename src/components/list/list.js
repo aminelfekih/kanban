@@ -3,18 +3,30 @@ import './list.css';
 import Story from '../story/story';
 
 class List extends Component {
+    constructor(props) {
+        super(props);
+        this.state = ({ mouseIsHovering: false });
+    }
+    componentWillReceiveProps() {
+        this.setState({ mouseIsHovering: false });
+      }
 
-  render() {
+    render() {
+    const { stories, name, onDragEnd } = {...this.props}
     return (
-      <div className="list">
-        <h4 className="border"> {this.props.name} </h4>
+        <div className="list"
+            onDragEnter={(e) => {this.setState({ mouseIsHovering: true }); this.props.onDragBegin(e, name);}}
+			onDragExit={(e) => {this.setState({ mouseIsHovering: false });}}
+      >
+        <h4 className="border"> {name} </h4>
         <div>
-          {this.props.stories.map((story) => {
+          {stories.map((story) => {
             return  (
             <Story
               story={story}
               key={story.name}
-            />           
+              onDragEnd={onDragEnd}
+            />
            )
             }
             )}

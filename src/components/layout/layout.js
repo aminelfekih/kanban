@@ -54,10 +54,20 @@ class Layout extends Component {
               name: 'Project 7',
               progression: "Story"
             },
-          ]
+          ],
+          dragged: 0,
         };
+        this.handleOnDragBegin = this.handleOnDragBegin.bind(this);
+        this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
       }
-
+    handleOnDragBegin(e,value) {
+        this.setState({ dragged: value });
+    }
+    handleOnDragEnd(e,value) {
+        let storiesToUpdate = this.state.stories
+        storiesToUpdate.find((story) => story.name === value.name).progression = this.state.dragged
+        this.setState({ stories: storiesToUpdate });
+    }
 
     render() {
     return (
@@ -69,6 +79,8 @@ class Layout extends Component {
                             name={ list.name }
                             key={ list.key }
                             stories={this.state.stories.filter((story) => story.progression === list.name)}
+                            onDragBegin={ this.handleOnDragBegin }
+							onDragEnd={ this.handleOnDragEnd }
 						/>
 					);
 				})}

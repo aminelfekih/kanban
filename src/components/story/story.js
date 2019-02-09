@@ -10,7 +10,11 @@ class Story extends Component {
         : {backgroundColor: '#F9EEB2', width: '90px', height: '90px'}
         
 		return (
-            <div className='story' style={styleStory}>
+            <div className='story'
+                style={styleStory}
+                draggable={true}
+                onDragEnd={(e) => {this.props.onDragEnd(e, this.props.story);}}
+            >
 				<div><h4>{story.name}</h4></div>
 			</div>
 		);
