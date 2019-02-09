@@ -12,14 +12,14 @@ class List extends Component {
       }
 
     render() {
-    const { stories, name, onDragEnd } = {...this.props}
+    const { stories, name, onDragEnd, alignFlex } = {...this.props}
     return (
         <div className="list"
             onDragEnter={(e) => {this.setState({ mouseIsHovering: true }); this.props.onDragBegin(e, name);}}
 			onDragExit={(e) => {this.setState({ mouseIsHovering: false });}}
       >
         <h4 className="border"> {name} </h4>
-        <div>
+        <div className={alignFlex ? "stories" : ""}>
           {stories.map((story) => {
             return  (
             <Story
@@ -29,7 +29,7 @@ class List extends Component {
             />
            )
             }
-            )}
+          )}
         </div>
       </div>
     );

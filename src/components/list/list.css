@@ -8,3 +8,6 @@
 .border {
     border-bottom: 1px solid #D7D7DD;
 }
+.stories {
+    display: flex;
+}

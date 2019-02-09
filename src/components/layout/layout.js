@@ -70,6 +70,7 @@ class Layout extends Component {
     }
 
     render() {
+    const stories = this.state.stories
     return (
       <div className="board">
         <div className="lists">
@@ -78,7 +79,8 @@ class Layout extends Component {
 						<List
                             name={ list.name }
                             key={ list.key }
-                            stories={this.state.stories.filter((story) => story.progression === list.name)}
+                            stories={stories.filter((story) => story.progression === list.name)}
+                            alignFlex={list.name === 'Story' ? false : true}
                             onDragBegin={ this.handleOnDragBegin }
 							onDragEnd={ this.handleOnDragEnd }
 						/>
