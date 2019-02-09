@@ -1,0 +1,10 @@
+.list {
+    width: 24%;
+    display: inline-block; 
+    margin-right: 10px; 
+    background-color: rgb(240, 238, 238);
+    height: auto
+}
+.border {
+    border-bottom: 1px solid #D7D7DD;
+}
