@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './story.css';
 
 class Story extends Component {
-
 	render() {
         const story = this.props.story
         let styleStory = story.progression === 'Story'
@@ -15,7 +14,7 @@ class Story extends Component {
                 draggable={true}
                 onDragEnd={(e) => {this.props.onDragEnd(e, this.props.story);}}
             >
-				<div><h4>{story.name}</h4></div>
+			    <div><h4>{story.name}</h4></div>
 			</div>
 		);
 	}

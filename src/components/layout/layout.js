@@ -32,7 +32,7 @@ class Layout extends Component {
         this.handleOnDragBegin = this.handleOnDragBegin.bind(this);
         this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
         this.onAddStory = this.onAddStory.bind(this);
-      }
+    }
     handleOnDragBegin(e,value) {
         this.setState({ dragged: value });
     }
@@ -55,21 +55,21 @@ class Layout extends Component {
     const stories = this.state.stories
     return (
       <div className="board">
-        <AddStory onAddStory={this.onAddStory}/>
-        <div className="lists">
-				{lists.map((list) => {
-					return (
-						<List
-                            name={ list.name }
-                            key={ list.key }
-                            stories={stories.filter((story) => story.progression === list.name)}
-                            alignFlex={list.name === 'Story' ? false : true}
-                            onDragBegin={ this.handleOnDragBegin }
-							onDragEnd={ this.handleOnDragEnd }
-						/>
-					);
-				})}
-        </div>
+          <AddStory onAddStory={this.onAddStory}/>
+          <div className="lists">
+              {lists.map((list) => {
+                return (
+                    <List
+                        name={ list.name }
+                        key={ list.key }
+                        stories={stories.filter((story) => story.progression === list.name)}
+                        alignFlex={list.name === 'Story' ? false : true}
+                        onDragBegin={ this.handleOnDragBegin }
+                        onDragEnd={ this.handleOnDragEnd }
+                    />
+                );
+              })}
+          </div>
       </div>
     );
   }
