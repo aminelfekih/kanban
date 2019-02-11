@@ -1,3 +1,7 @@
+We have to run the server before running the kanban board: 
+https://github.com/aminelfekih/kanbanServer
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
